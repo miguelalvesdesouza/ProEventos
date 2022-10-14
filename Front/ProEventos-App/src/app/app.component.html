@@ -1,9 +1,12 @@
 <app-nav></app-nav>
 
 <div class="container">
-  <app-eventos></app-eventos>
 
   <router-outlet></router-outlet>
+
+  <ngx-spinner type="ball-scale-multiple">
+    <p>Carregando...</p>
+  </ngx-spinner>
 
 </div>
 
