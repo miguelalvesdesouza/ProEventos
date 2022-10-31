@@ -29,7 +29,11 @@
         <label>Data e Hora</label>
         <input type="datetime" class="form-control "
         [ngClass]="{'is-invalid' : f.dataEvento.errors && f.dataEvento.touched}"
-        formControlName="dataEvento" placeholder="">
+        value="{{evento.dataEvento | DateTimeFormat}}"
+        bsDatepicker
+        [bsConfig]="bsConfig"
+        formControlName="dataEvento" placeholder=""
+        [(ngModel)]="evento.dataEvento">
       <div *ngIf="f.dataEvento.errors?.required && f.dataEvento.touched" class="invalid-feedback">Data e Hora é obrigatório</div>
       </div>
     </div>
@@ -71,7 +75,7 @@
       <button class="btn btn-outline-secondary mr-auto border" (click)="resetForm()">
         Cancelar Alteração
       </button>
-      <button class="btn btn-success" [disabled]="!form.valid">
+      <button class="btn btn-success" [disabled]="!form.valid" (click)="salvarAlteracao()">
         <span *ngIf="!form.valid" class="spinner-border spinner-border-sm mr-1"></span>
         <span *ngIf="form.valid" class=""></span>
         Salvar Evento
